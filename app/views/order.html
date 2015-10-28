@@ -7,18 +7,22 @@
         <div class="panel-body">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Förnamn</label>
+              <label>Förnamn</label>
               <input type="text" class="form-control" placeholder="Förnamn">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Efternamn</label>
+              <label>Efternamn</label>
               <input type="text" class="form-control" placeholder="Efternamn">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Adress</label>
+              <label>Adress</label>
               <input type="text" class="form-control" placeholder="Adress">
             </div>
-            <button type="submit" class="btn btn-success">Gå till betalning</button>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <button type="submit" class="btn btn-success" ng-click="confirm()">Skapa konto</button>
           </form>
         </div>
       </div>
@@ -28,11 +32,14 @@
         <div class="panel-heading">Din beställning</div>
         <div class="panel-body">
           <div class="page-header">
-            <h3>Abonnemang litet</h3>
-            <h4>1 tillfälle i veckan</h4>
+            <h3>{{product.name}}</h3>
+            <h4>{{product.count}} tillfällen i veckan</h4>
           </div>
-
-          <h5>Pris <span>289 kr</span></h5>
+          <div class="page-header">
+            <h5>Gäller för en full tvättmaskin per tillfälle dvs 5 liter</h5>
+            <h5>Vit- och kulörtvätt får ej blandas i samma tvätt</h5>
+          </div>
+          <h5>Pris per vecka <span>{{ product.count * product.price }} kr</span></h5>
         </div>
       </div>
     </div>

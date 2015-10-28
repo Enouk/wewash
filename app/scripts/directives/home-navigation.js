@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('wewashApp')
-  .controller('navigationCtrl', function($scope, $location) {
+  .controller('homeNavigationCtrl', function($scope, $location) {
 
     $scope.contains = function(viewLocation) {
       return $location.path().indexOf(viewLocation) !== -1;
@@ -10,10 +10,10 @@ angular.module('wewashApp')
   });
 
 angular.module('wewashApp')
-  .directive('navigation', function () {
+  .directive('homeNavigation', function() {
     return {
-      controller: 'navigationCtrl',
-      templateUrl: 'views/navigation.html',
+      controller: 'homeNavigationCtrl',
+      templateUrl: 'views/home-navigation.html',
       restrict: 'E', // (2)
       replace: true, // (3)
       transclude: true // (4)

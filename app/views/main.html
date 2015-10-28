@@ -5,18 +5,42 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="row marketing">
-              <h2>Boka tvätt på nätet inom Växjö</h2>
-              <p>
-                Vi hämtar, tvättar, viker och kör tillbaka din tvätt
-              </p>
+            <div class="row marketing text-center red-text">
+              <h1>Boka tvätt på nätet inom Växjö</h1>
+              <p>Vi hämtar, tvättar, tumlar, viker och lämnar tillbaka din tvätt</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="jumbotron jumbo">
+  <div class="jumbotron jumbo none-border-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="container">
+          <div class="col-sm-4 col-md-4">
+            <div class="caption">
+              <h3><span class="glyphicon glyphicon-time" aria-hidden="true"></span></h3>
+              <h4>Boka hämtning när det passar dig</h4>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <div class="caption">
+              <h3><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span></h3>
+              <h4>Vi hämtar och lämnar inom 24 timmar</h4>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <div class="caption">
+              <h3><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></h3>
+              <h4>Ingen bindningstid</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="jumbotron jumbo pitch-time">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -33,70 +57,94 @@
   <div class="container">
     <div class="row">
       <div class="page-header text-center">
-        <h1>Välj ett paket som passar just <large>dig</large></h1>
+        <h1>Hur mycket tvättar ni?</h1>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-offset-3 col-md-6">
+        <h4>Ange antal hämtningar i månaden</h4>
+        <rzslider rz-slider-model="selection.pickups" rz-slider-floor="1" rz-slider-ceil="20" rz-slider-on-change="selectionChanged()"></rzslider>
+        <h4>Ange antal liter tvätt per hämtning <small>5 liter är en full maskin</small></h4>
+        <rzslider rz-slider-model="selection.volumes" rz-slider-floor="1" rz-slider-ceil="20"></rzslider>
+      </div>
+    </div>
+    <div class="row">
+      <div class="page-header text-center">
+        <h1>Välj vad som passar just dig</h1>
+      </div>
+    </div>
+    <!-- Dynamiskt pris -->
+    <div class="row">
+      <!-- Rörligt pris -->
+      <div class="col-md-6">
         <div class="panel panel-default text-center">
-          <div class="panel-heading">Abonnemang Litet</div>
+          <div class="panel-heading">Rörligt Pris</div>
           <div class="panel-body">
             <div class="page-header">
-              <h1>289 kr</h1>
-              <h4>per tvätt</h4>
-              <h4>1 tillfälle i veckan</h4>
+              <h1>{{selection.pickups * prices.pickup + selection.pickups * selection.volumes * prices.liter }} kr</h1>
+              <h4>{{selection.pickups}} hämtningar</h4>
+              <h4>{{selection.pickups * selection.volumes }} liter tvätt<h4>
             </div>
             <ul class="list-group">
-              <li class="list-group-item">1 tvättillfälle i veckan</li>
-              <li class="list-group-item">Gäller för 5 liter tvätt</li>
-              <li class="list-group-item">Välj en dag i veckan som passar dig</li>
-              <li class="list-group-item">Måndag eller kanske Onsdag?</li>
-<!--               <li class="list-group-item">4 tillfällen i månaden</li> -->
-              <!-- <li class="list-group-item">1156 kr i månaden</li> -->
             </ul>
-            <button type="button" class="btn btn-block btn-success" ng-click="order(Subscription.SMALL)">Beställ</button>
+            <button type="button" class="btn btn-block btn-success" ng-click="order(product)">Beställ</button>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">Abonnemang Mellan</div>
+      <!-- Fast pris -->
+      <div class="col-md-6">
+        <div class="panel panel-default text-center" ng-model="subscription = getAppropriateSubscription()">
+          <div class="panel-heading">Fast Pris {{subscription.name}}</div>
           <div class="panel-body">
             <div class="page-header">
-              <h1>249 kr</h1>
-              <h4>per tvätt</h4>
-              <h4>2 tillfällen i veckan</h4>
+              <h1>{{subscription.price}} kr/mån</h1>
+              <h4>{{subscription.pickups}} hämtningar</h4>
+              <h4>Max {{subscription.range.max}} liter</h4>
             </div>
             <ul class="list-group">
-              <li class="list-group-item">2 tvättillfällen i veckan</li>
-              <li class="list-group-item">Gäller för 5 liter tvätt</li>
-              <li class="list-group-item">Välj 2 veckor dagar som passar dig</li>
-              <li class="list-group-item">Tisdag och Torsdag kanske?</li>
-<!--               <li class="list-group-item">8 tillfällen i månaden</li> -->
-              <!--               <li class="list-group-item">1992 kr i månaden</li> -->
             </ul>
-            <button type="button" class="btn btn-block btn-success" ng-click="order(Subscription.MEDIUM)">Beställ</button>
+            <button type="button" class="btn btn-block btn-success" ng-click="order(product)">Beställ</button>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+    </div>
+
+    <!-- Paket pris -->
+    <!--     <div class="row">
+      <div class="page-header text-center">
+        <h1>Välj vad som passar just <large>dig</large></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div ng-repeat="product in products" class="col-md-4">
         <div class="panel panel-default text-center">
-          <div class="panel-heading">Abonnemang Stort</div>
+          <div class="panel-heading">{{product.name}}</div>
           <div class="panel-body">
             <div class="page-header">
-              <h1>219 kr</h1>
+              <h1>{{product.price}} kr</h1>
               <h4>per tvätt</h4>
-              <h4>3 tillfällen i veckan</h4>
+              <h4>{{product.count}} tillfälle i veckan</h4>
             </div>
             <ul class="list-group">
-              <li class="list-group-item">3 tvättillfällen i veckan</li>
+              <li ng-if="product.count === 1" class="list-group-item">{{product.count}} tvättillfälle i veckan</li>
+              <li ng-if="product.count > 1" class="list-group-item">{{product.count}} tvättillfällen i veckan</li>
               <li class="list-group-item">Gäller för 5 liter tvätt</li>
-              <li class="list-group-item">Välj 3 veckodagar som passar dig</li>
-              <li class="list-group-item">Måndag, Onsdag och Fredag?</li>
-<!--               <li class="list-group-item">4 tillfällen i månaden</li> -->
-<!--               <li class="list-group-item">2628 kr i månaden</li> -->
+              <li ng-if="product.count === 1" class="list-group-item">Välj en dag i veckan som passar dig</li>
+              <li ng-if="product.count > 1" class="list-group-item">Välj {{product.count}} dagar i veckan som passar dig</li>
             </ul>
-            <button type="button" class="btn btn-block btn-success" ng-click="order(Subscription.BIG)">Beställ</button>
+            <button type="button" class="btn btn-block btn-success" ng-click="order(product)">Beställ</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="jumbotron jumbo footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row marketing">
+            <h2>Behöver du mer information?</h2>
+            <button type="button" class="btn btn-info" ng-click="moreInfo()">Klicka här</button>
           </div>
         </div>
       </div>

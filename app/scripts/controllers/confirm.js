@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name wewashApp.controller:HowCtrl
+ * @name wewashApp.controller:ConfirmCtrl
  * @description
- * # HowCtrl
+ * # ConfirmCtrl
  * Controller of the wewashApp
  */
 angular.module('wewashApp')
-  .controller('HowCtrl', function ($scope) {
+  .controller('ConfirmCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

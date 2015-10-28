@@ -4,64 +4,26 @@
     <div class="page-header text-center">
       <h1>Välj vad som passar dig</h1>
     </div>
-    
-     <div class="col-md-4">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">Abonnemang Litet</div>
-          <div class="panel-body">
-            <div class="page-header">
-              <h1>289 kr</h1>
-              <h4>per tvätt</h4>
-              <h4>1 tillfälle i veckan</h4>
-            </div>
-            <ul class="list-group">
-              <li class="list-group-item">1 tvättillfälle i veckan</li>
-              <li class="list-group-item">Välj en dag i veckan som passar dig</li>
-              <li class="list-group-item">Måndag eller kanske Onsdag?</li>
-              <!-- <li class="list-group-item">289 kr i månaden</li> -->
-            </ul>
-            <button type="button" class="btn btn-block btn-success" ng-click="order(Subscription.SMALL)">Beställ</button>
+    <div ng-repeat="product in products" class="col-md-4">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">{{product.name}}</div>
+        <div class="panel-body">
+          <div class="page-header">
+            <h1>{{product.price}} kr</h1>
+            <h4>per tvätt</h4>
+            <h4 ng-if="product.count === 1">{{product.count}} tillfälle i veckan</h4>
+            <h4 ng-if="product.count > 1">{{product.count}} tillfällen i veckan</h4>
           </div>
+          <ul class="list-group">
+            <li ng-if="product.count === 1" class="list-group-item">{{product.count}} tvättillfälle i veckan</li>
+            <li ng-if="product.count > 1" class="list-group-item">{{product.count}} tvättillfällen i veckan</li>
+            <li class="list-group-item">Gäller för 5 liter tvätt</li>
+            <li ng-if="product.count === 1" class="list-group-item">Välj en dag i veckan som passar dig</li>
+            <li ng-if="product.count > 1" class="list-group-item">Välj {{product.count}} dagar i veckan som passar dig</li>
+          </ul>
+          <button type="button" class="btn btn-block btn-success" ng-click="order(product)">Beställ</button>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">Abonnemang Mellan</div>
-          <div class="panel-body">
-            <div class="page-header">
-              <h1>249 kr</h1>
-              <h4>per tvätt</h4>
-              <h4>2 tillfällen i veckan</h4>
-            </div>
-            <ul class="list-group">
-              <li class="list-group-item">2 tvättillfällen i veckan</li>
-              <li class="list-group-item">Välj 2 veckor dagar som passar dig</li>
-              <li class="list-group-item">Tisdag och Torsdag kanske?</li>
-<!--               <li class="list-group-item">1992 kr i månaden</li> -->
-            </ul>
-            <button type="button" class="btn btn-block btn-success" ng-click="order(Subscription.MEDIUM)">Beställ</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">Abonnemang Stort</div>
-          <div class="panel-body">
-            <div class="page-header">
-              <h1>219 kr</h1>
-              <h4>per tvätt</h4>
-              <h4>3 tillfällen i veckan</h4>
-            </div>
-            <ul class="list-group">
-              <li class="list-group-item">3 tvättillfällen i veckan</li>
-              <li class="list-group-item">Välj 3 veckodagar som passar dig</li>
-              <li class="list-group-item">Måndag, Onsdag och Fredag?</li>
-              <!-- <li class="list-group-item">2628 kr i månaden</li> -->
-            </ul>
-            <button type="button" class="btn btn-block btn-success" ng-click="order(Subscription.BIG)">Beställ</button>
-          </div>
-        </div>
-      </div>
-      
+    </div>
   </div>
 </div>

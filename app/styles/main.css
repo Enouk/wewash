@@ -1,7 +1,7 @@
 /* Space out content a bit */
 body {
   padding-top: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -42,5 +42,31 @@ body {
 }
 .marketing p + h4 {
   margin-top: 28px;
+}
+
+.none-border-bottom {
+  border-bottom: none;
+}
+
+.pitch-time {
+  background-color: #39AE82;
+  color: #FFF;
+}
+
+.red-text h1 {
+   color: #F10C5A; 
+}
+
+.footer {
+  background-color: #323232;
+  color: #FBFFFF;
+
+  border: none;
+
+  padding-top: 0px;
+  padding-bottom: 200px;
+  
+  margin-top: 100px;
+  margin-bottom: 0px;
 }
 

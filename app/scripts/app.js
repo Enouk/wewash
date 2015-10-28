@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'rzModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -38,6 +39,18 @@ angular
       .when('/order', {
         templateUrl: 'views/order.html',
         controller: 'OrderCtrl'
+      })
+      .when('/home', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
+      })
+      .when('/confirm', {
+        templateUrl: 'views/confirm.html',
+        controller: 'ConfirmCtrl'
+      })
+      .when('/faq', {
+        templateUrl: 'views/faq.html',
+        controller: 'FaqCtrl'
       })
       .otherwise({
         redirectTo: '/'

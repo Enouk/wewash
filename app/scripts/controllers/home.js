@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name wewashApp.controller:HowCtrl
+ * @name wewashApp.controller:HomeCtrl
  * @description
- * # HowCtrl
+ * # HomeCtrl
  * Controller of the wewashApp
  */
 angular.module('wewashApp')
-  .controller('HowCtrl', function ($scope) {
+  .controller('HomeCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

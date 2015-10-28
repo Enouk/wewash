@@ -1,17 +1,16 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name wewashApp.controller:PriceCtrl
- * @description
- * # PriceCtrl
- * Controller of the wewashApp
- */
+
 angular.module('wewashApp')
-  .controller('PriceCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('PriceCtrl', function($scope, $location, ProductService, Client) {
+
+    $scope.products = ProductService.all();
+
+    $scope.order = function(product) {
+
+      Client.setProduct(product);
+
+      $location.path('/order');
+    };
+
   });

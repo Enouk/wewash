@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: navigation', function () {
+describe('Directive: homeNavigation', function () {
 
   // load the directive's module
   beforeEach(module('wewashApp'));
@@ -13,8 +13,8 @@ describe('Directive: navigation', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<navigation></navigation>');
+    element = angular.element('<home-navigation></home-navigation>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the navigation directive');
+    expect(element.text()).toBe('this is the homeNavigation directive');
   }));
 });

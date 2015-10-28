@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: PriceCtrl', function () {
+describe('Controller: FaqCtrl', function () {
 
   // load the controller's module
   beforeEach(module('wewashApp'));
 
-  var PriceCtrl,
+  var FaqCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    PriceCtrl = $controller('PriceCtrl', {
+    FaqCtrl = $controller('FaqCtrl', {
       $scope: scope
     });
   }));
