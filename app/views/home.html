@@ -1,20 +1,34 @@
 <home-navigation></home-navigation>
 <div class="navbar-offset">
   <div class="jumbotron jumbo">
-    <div class="container">
+    <!-- No order -->
+    <div class="container" ng-show="order.status === ORDER_STATUS.CANCELLED">
       <div class="row">
         <div class="col-md-12">
           <div class="row marketing text-center">
-            <h2>3 tillfällen kvar denna veckan</h2>
+            <h2>{{subscription.pickups - used.pickups}} hämtningar kvar denna månaden</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-success" ng-click="pickup()">Boka Hämtning</button>
+      </div>
+    </div>
+    <!-- Order placed -->
+    <div class="container" ng-show="order.status === ORDER_STATUS.ORDER_PLACED">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row marketing text-center">
+            <h2>{{subscription.pickups - used.pickups}} hämtningar kvar denna månaden</h2>
             <h4>Hämtning planerad idag</h>
             <h1>18.00</h1>
           </div>
         </div>
       </div>
       <div class="row">
-        <button type="button" class="btn btn-success">Ändra</button>
-        <button type="button" class="btn btn-warning">Avboka</button>
+        <button type="button" class="btn btn-warning" ng-click="cancel()">Avboka</button>
       </div>
     </div>
+
   </div>
 </div>

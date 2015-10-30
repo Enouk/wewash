@@ -52,6 +52,14 @@ angular
         templateUrl: 'views/faq.html',
         controller: 'FaqCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .when('/account', {
+        templateUrl: 'views/account.html',
+        controller: 'AccountCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

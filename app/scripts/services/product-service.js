@@ -22,30 +22,33 @@ angular.module('wewashApp')
     }];
 
     var _subscriptions = [{
-      id: 'sub_small',
+      id: 'lilla',
       name: 'Abonnemang Lilla',
       range: {
         min: 0,
         max: 30
       },
+      max: 30,
       pickups: 4,
       price: 600
     }, {
-      id: 'sub_medium',
+      id: 'mellan',
       name: 'Abonnemang Mellan',
       range: {
         min: 0,
         max: 60
       },
+      max: 60,
       pickups: 6,
       price: 900
     }, {
-      id: 'sub_big',
+      id: 'stora',
       name: 'Abonnemang Stora',
       range: {
         min: 0,
         max: 90
       },
+      max: 90,
       pickups: 8,
       price: 1200
     }];
