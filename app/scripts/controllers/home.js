@@ -2,8 +2,10 @@
 
 
 angular.module('wewashApp')
-  .controller('HomeCtrl', function ($scope) {
+  .controller('HomeCtrl', function ($scope, Client) {
 
+    $scope.user = Client.getUser();
+    
     $scope.subscription = {
       id: 'lilla',
       name: 'Abonnemang Lilla',

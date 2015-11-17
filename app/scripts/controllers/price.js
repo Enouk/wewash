@@ -4,13 +4,17 @@
 angular.module('wewashApp')
   .controller('PriceCtrl', function($scope, $location, ProductService, Client) {
 
-    $scope.products = ProductService.all();
+    $scope.subscriptions = Client.getSubscriptions();
 
-    $scope.order = function(product) {
+    $scope.subscribe = function(subscription) {
 
-      Client.setProduct(product);
+      Client.setSubscription(subscription);
 
       $location.path('/order');
+    };
+
+    $scope.getProduct = function(id) {
+      return Client.getProduct(id);
     };
 
   });

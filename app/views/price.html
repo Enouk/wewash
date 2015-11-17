@@ -2,28 +2,27 @@
 <div class="container navbar-offset">
   <div class="row">
     <div class="page-header text-center">
-      <h1>Välj vad som passar dig</h1>
+      <h1>Abonnemang</h1>
     </div>
-    <div ng-repeat="product in products" class="col-md-4">
+    <div ng-repeat="s in subscriptions" class="col-md-4">
       <div class="panel panel-default text-center">
-        <div class="panel-heading">{{product.name}}</div>
+        <div class="panel-heading">{{s.name}}</div>
         <div class="panel-body">
           <div class="page-header">
-            <h1>{{product.price}} kr</h1>
-            <h4>per tvätt</h4>
-            <h4 ng-if="product.count === 1">{{product.count}} tillfälle i veckan</h4>
-            <h4 ng-if="product.count > 1">{{product.count}} tillfällen i veckan</h4>
+            <h1>{{s.price}} kr</h1>
+            <h4>i veckan</h4>
+            <h5 ng-click="s.expand=!s.expand"><a>Detta ingår <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></h5>
+            <dl ng-show="s.expand===true">
+              <div ng-repeat="sp in s.products">
+                <dt>{{sp.count}} st {{getProduct(sp.id).name}}</dt>
+                <dd>{{getProduct(sp.id).description}}</dd>
+              </div>
+            </dl>
           </div>
-          <ul class="list-group">
-            <li ng-if="product.count === 1" class="list-group-item">{{product.count}} tvättillfälle i veckan</li>
-            <li ng-if="product.count > 1" class="list-group-item">{{product.count}} tvättillfällen i veckan</li>
-            <li class="list-group-item">Gäller för 5 liter tvätt</li>
-            <li ng-if="product.count === 1" class="list-group-item">Välj en dag i veckan som passar dig</li>
-            <li ng-if="product.count > 1" class="list-group-item">Välj {{product.count}} dagar i veckan som passar dig</li>
-          </ul>
-          <button type="button" class="btn btn-block btn-success" ng-click="order(product)">Beställ</button>
         </div>
+        <button type="button" class="btn btn-block btn-success" ng-click="subscribe(s)">Beställ</button>
       </div>
     </div>
   </div>
+</div>
 </div>

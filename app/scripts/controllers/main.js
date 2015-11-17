@@ -6,54 +6,39 @@ angular.module('wewashApp')
 
     $scope.selection = {
 
-      people: {
-        adults: 2,
-        teens: 0,
-        children: 2,
-        babies: 0
-      },
-
-      pickups: 8,
-      volumes: 5
+      subscription: undefined
     };
 
-    $scope.prices = {
+    $scope.init = function() {
 
-      pickup: 50,
-      liter: 30
+      ProductService.getProducts()
+        .success(function(products) {
+          Client.setProducts(products);
+
+          $scope.products = Client.getProducts();
+          $scope.subscriptions = Client.getSubscriptions();
+        })
+        .error(function() {
+          $scope.info = undefined;
+          $scope.error = 'Kunde ej hämta produktlistan';
+        });
     };
 
-    $scope.products = ProductService.all();
-    $scope.subscriptions = ProductService.subscriptions();
-
-    $scope.order = function(product) {
-
-      Client.setProduct(product);
-
-      $location.path('/order');
-    };
+    $scope.init();
 
     $scope.moreInfo = function() {
       $location.path('/faq');
     };
 
-    $scope.selectionChanged = function() {
+    $scope.subscribe = function(subscription) {
 
+      Client.setSubscription(subscription);
+
+      $location.path('/order');
     };
-    
-    $scope.getAppropriateSubscription = function() {
 
-      var amount = $scope.selection.pickups * $scope.selection.volumes;
-
-      for (var i = 0; i < $scope.subscriptions.length; i++) {
-        var subscription = $scope.subscriptions[i];
-
-        if (subscription.range.max < amount) {
-          return subscription;
-        }
-      }
-
-      return $scope.subscriptions[0];
+    $scope.getProduct = function(id) {
+      return Client.getProduct(id);
     };
 
   });

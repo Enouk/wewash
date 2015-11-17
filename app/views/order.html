@@ -29,17 +29,18 @@
     </div>
     <div class="col-md-6">
       <div class="panel panel-default text-center">
-        <div class="panel-heading">Din beställning</div>
+        <div class="panel-heading">{{subscription.name}}</div>
         <div class="panel-body">
           <div class="page-header">
-            <h3>{{product.name}}</h3>
-            <h4>{{product.count}} tillfällen i veckan</h4>
+            <h1>{{subscription.price}} kr</h1>
+            <h4>i veckan</h4>
+            <dl>
+              <div ng-repeat="sp in subscription.products">
+                <dt>{{sp.count}} st {{getProduct(sp.id).name}}</dt>
+                <dd>{{getProduct(sp.id).description}}</dd>
+              </div>
+            </dl>
           </div>
-          <div class="page-header">
-            <h5>Gäller för en full tvättmaskin per tillfälle dvs 5 liter</h5>
-            <h5>Vit- och kulörtvätt får ej blandas i samma tvätt</h5>
-          </div>
-          <h5>Pris per vecka <span>{{ product.count * product.price }} kr</span></h5>
         </div>
       </div>
     </div>
